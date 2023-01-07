@@ -1,3 +1,6 @@
+# 230. Kth Smallest Element in a BST
+# https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -24,10 +27,11 @@ class Solution:
         # return res[k-1]
 
 
-        # Iterative Solution - How to do pre-order traversing iteratively (******)
+        # Iterative Solution - How to do pre-order traversing iteratively.
 
         st = []
         res = []
+        n = 0
 
         cur = root
 
@@ -37,7 +41,12 @@ class Solution:
                 cur = cur.left
 
             p = st.pop()
-            res.append(p.val)
+            n += 1
+
+            if n == k:
+                return p.val
+
+            # res.append(p.val)
 
             cur = p.right
 
