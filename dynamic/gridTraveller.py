@@ -1,6 +1,6 @@
 from functools import lru_cache
 
-# Time: O(2 ^ (n + m))  -> O(n+m)
+# Time: O(2 ^ (n + m))  -> O(n * m)
 # Space: O(n+m)
 
 memo = {}
