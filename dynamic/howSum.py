@@ -20,6 +20,7 @@ def howSum(target, nums):
             res = howSum(target-n, nums)
             if res != None:
                 res.append(n)
+#                 ret = ret[:] + [n]
                 memo[target] = res
                 return res
             
