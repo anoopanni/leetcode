@@ -1,6 +1,15 @@
 # 48. Rotate Image
 # https://leetcode.com/problems/rotate-image/description/
 
+
+
+# Trick to rotate
+
+# 90: Transpose + Reverse Rows
+# 180: Reverse Rows + Reverse columns
+# 270 : Transpose + Reverse Columns
+# 360 : will be same matrix after rotation
+
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
         """
