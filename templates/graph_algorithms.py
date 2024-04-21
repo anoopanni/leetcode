@@ -55,6 +55,9 @@ print(solution_obj.numIslands([["1","1","0","0","0"],["1","1","0","0","0"],["0",
 from collections import defaultdict, deque
 
 class Solution:
+    def __init__(self):
+        self.res = []
+
     def canFinish(self, crs: int, pre: List[List[int]]) -> bool:
 
         adj_list = defaultdict(list)
@@ -74,18 +77,23 @@ class Solution:
             
             course_taken = q.popleft()
 
-            crs -= 1
+            crs -= 1 # Decrement the number of courses taken as we are taking a course
+            self.res.append(course_taken)
+
 
             for dest_edge in adj_list[course_taken]:
                 in_degree[dest_edge] -= 1
                 if in_degree[dest_edge] == 0:
                     q.append(dest_edge)
+
         
         if not crs:
             return True
 
+        self.res = []
+
         return False
     
 solution_obj = Solution()
-print(solution_obj.canFinish(2, [[1,0]])) # True
-print(solution_obj.canFinish(2, [[1,0],[0,1]])) # False
+print(solution_obj.canFinish(2, [[1,0]]), solution_obj.res) # True
+print(solution_obj.canFinish(2, [[1,0],[0,1]]), solution_obj.res) # False
