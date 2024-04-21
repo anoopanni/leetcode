@@ -58,7 +58,7 @@ print(solution_obj.numIslands([["1","1","1","1","0"],["1","1","0","1","0"],["1",
 print(solution_obj.numIslands([["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]])) # 3
 
 
-# KHAN'S ALGORITHM - TOPOLOGICAL SORTING O(V + E) |  Example problem: Course Schedule 1 and 2
+# KAHN'S ALGORITHM - TOPOLOGICAL SORTING O(V + E) |  Example problem: Course Schedule 1 and 2
 # time: O(V + E) where V is the number of vertices and E is the number of edges
 # space: O(V + E) where V is the number of vertices and E is the number of edges
 from collections import defaultdict, deque
