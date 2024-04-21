@@ -1,6 +1,7 @@
+
+# BREADTH FIRST SEARCH and DEPTH FIRST SEARCH - RECURSIVE + ITERATIVE | Example problem: Number of Islands
 from collections import deque
 from typing import List
-
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         ROWS, COLS = len(grid), len(grid[0])
@@ -52,8 +53,8 @@ print(solution_obj.numIslands([["1","1","1","1","0"],["1","1","0","1","0"],["1",
 print(solution_obj.numIslands([["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]])) # 3
 
 
+# KHAN'S ALGORITHM - TOPOLOGICAL SORTING  |  Example problem: Course Schedule 1 and 2
 from collections import defaultdict, deque
-
 class Solution:
     def __init__(self):
         self.res = []
@@ -97,3 +98,55 @@ class Solution:
 solution_obj = Solution()
 print(solution_obj.canFinish(2, [[1,0]]), solution_obj.res) # True
 print(solution_obj.canFinish(2, [[1,0],[0,1]]), solution_obj.res) # False
+
+
+# UNION FIND - DISJOINT SETS | Example Problem: Graph Valid Tree and Redundant Connection
+class UnionFind:
+    def __init__(self, n):
+        self.n = n
+        self.rank = [1] * n
+        self.parents = [i for i in range(self.n)]
+
+    def find(self, node):
+        while node != self.parents[node]:
+            self.parents[node] = self.parents[self.parents[node]] # Path compression
+            node = self.parents[node]
+
+        return node
+
+
+    def union(self, n1, n2):
+        node1 = self.find(n1)
+        node2 = self.find(n2) 
+
+        if node1 == node2:
+            return True 
+
+        if self.rank[node1] >= self.rank[node2]:
+            self.parents[node2] = node1 
+            self.rank[node1] += 1
+        else:
+            self.parents[node1] = node2
+            self.rank[node2] += 1
+
+        return False
+    
+
+class Solution:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        union_find_obj = UnionFind(n) 
+
+        for e1, e2 in edges:
+            if union_find_obj.union(e1, e2):
+                return False
+            n -= 1
+
+        if n > 1:
+            return False
+
+        return True
+    
+
+solution_obj = Solution()
+print(solution_obj.validTree(5, [[0,1],[0,2],[0,3],[1,4]])) # True
+print(solution_obj.validTree(5, [[0,1],[1,2],[2,3],[1,3],[1,4]])) # False
