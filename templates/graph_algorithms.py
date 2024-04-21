@@ -353,3 +353,6 @@ print(solution_obj.findCheapestPrice(3, [[0,1,100],[1,2,100],[0,2,500]], 0, 2, 0
 # Bellman-Ford Algorithm: Capable of finding the shortest path from a single source in directed or undirected graphs, including those with negative weights.
 # Kruskal's Algorithm: Identifies the minimum spanning tree (MST) in an undirected graph; effective even with negative weights.
 # Prim's Algorithm: Also calculates the MST in undirected graphs with negative weights.
+
+
+# Dijkstra's Algorithm finds the shortest path between a given node (which is called the "source node") and all other nodes in a graph.
